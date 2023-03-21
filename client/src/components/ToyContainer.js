@@ -10,8 +10,7 @@ function ToyContainer({ toys, onDeleteToy, onUpdateToy }) {
       onUpdateToy={onUpdateToy}
     />
   ));
-
-  return <div id="toy-collection">{toyCards}</div>;
+  return <div id="toy-collection" key={toys.name}>{toyCards}</div>;
 }
 
 export default ToyContainer;

@@ -3,7 +3,7 @@ import React from "react";
 function ToyCard({ toy, onDeleteToy, onUpdateToy }) {
   const { id, name, image, likes } = toy;
 
-  function handleDeleteClick() {
+  function handleDeleteClick(toy) {
     fetch(`/toys/${id}`, {
       method: "DELETE",
     }).then((r) => {
@@ -26,11 +26,12 @@ function ToyCard({ toy, onDeleteToy, onUpdateToy }) {
       body: JSON.stringify(updateObj),
     })
       .then((r) => r.json())
-      .then((updatedToy) => onUpdateToy(updatedToy));
+      .then((updatedToy) => onUpdateToy(updatedToy))
+;
   }
 
   return (
-    <div className="card">
+    <div className="card" key={toy.name}>
       <h2>{name}</h2>
       <img src={image} alt={name} className="toy-avatar" />
       <p>{likes} Likes </p>
